@@ -103,12 +103,12 @@ function createNewPage(pdf) {
 
 // Html2pdf options
 var opt = {
-    margin:       1,
+    margin:       0,
     filename:     'Nicholus Muthomi - Cv.pdf',
-    image:        { type: 'jpeg',quality: 0.98 },
-    html2canvas:  { scale: 4, letterRendering: true, },
-    jsPDF:        { format: 'A3', orientation: 'portrait', },
-  };
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { scale: 4, letterRendering: true, useCORS: true },
+    jsPDF: { format: 'a4', orientation: 'portrait' }
+};
 
 
 // Function to call areaCv and Html2Pdf options 
