@@ -11,7 +11,7 @@
   --text-color-light: #707070;
   --container-color: #FAFAFA;
   --container-color-alt: #F0EFEF;
-  --text-project-color-: #7B67C7;
+  --text-project-color-: #403A3A;
   --body-color: #FCFCFC;
 
   /*========== Font and typography ==========*/
@@ -144,8 +144,8 @@ body.scale-cv
 }
 .scale-cv, .scale-cv .experience__rounder
 {
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
   margin-top: 0.22rem;
 }
 .scale-cv, .scale-cv .experience__line
@@ -420,13 +420,13 @@ img
 {
   position: relative;
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 10px;
   background-color: var(--text-color-light);
   border-radius: 50%;
   margin-top: 0.25rem;
 }
-., .experience__line
+.,.experience__line
 {
   display: block;
   width: 2px;
