@@ -66,20 +66,36 @@ const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-moo
 
 // We validate if the user previously chose a topic
 if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
   document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
   themeButton.classList[selectedIcon === 'bx-moon' ? 'add' : 'remove'](iconTheme)
 }
 
 // Activate / deactivate the theme manually with the button
 themeButton.addEventListener('click', () => {
-    // Add or remove the dark / icon theme
     document.body.classList.toggle(darkTheme)
     themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+const dayNight = document.querySelector("#theme-button");
+function updateIcon() {
+    if (document.body.classList.contains("dark")) {
+        dayNight.classList.remove("bx-moon");
+        dayNight.classList.add("bx-sun");
+    } else {
+        dayNight.classList.remove("bx-sun");
+        dayNight.classList.add("bx-moon");
+    }
+}
+
+function setThemeBasedOnTime() {
+    document.body.classList.remove("dark-theme");
+    localStorage.setItem("theme", "light");
+    updateIcon();
+}
+
+setThemeBasedOnTime();
 
 /*==================== REDUCE THE SIZE AND PRINT ON AN A4 SHEET ====================*/ 
 function scaleCv(){
@@ -129,38 +145,3 @@ resumeButton.addEventListener('click', () =>
     // 3. The .scale-cv class is removed from the body after 5 seconds to return to normal size.
     setTimeout(removeScale, 5000)
 })
-
-const dayNight = document.querySelector("#theme-button");
-function updateIcon() 
-{
-    if (document.body.classList.contains("dark")) 
-    {
-        dayNight.classList.remove("bx-moon");
-        dayNight.classList.add("bx-sun");
-    } 
-    else 
-    {
-        dayNight.classList.remove("bx-sun");
-        dayNight.classList.add("bx-moon");
-    }
-}
-
-function setThemeBasedOnTime() 
-{
-    const hour = new Date().getHours();
-    const isNight = hour >= 18 || hour <= 7;
-
-    if (isNight) 
-    {
-        document.body.classList.add("dark-theme");
-        localStorage.setItem("theme", "dark");
-    } 
-    else 
-    {
-        document.body.classList.remove("dark-theme");
-        localStorage.setItem("theme", "light");
-    }
-    updateIcon();
-}
-
-setThemeBasedOnTime();
